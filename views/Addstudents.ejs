@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">Welcome TO Mongo Db Database Learning</h1>
+      <center>
+        <a href="/addstudent">Add Student</a>
+        &nbsp; 
+        <a href="/viewstudent">View Student</a>
+      </center>
+      <hr>
+      <center>
+         <form action="/addstudent" method="post">
+            Enter Student Name: <input type="text" name="name" required>
+            <br><br>
+            Enter Student Age: <input type="number" name="age" required>
+            <br><br>
+            Enter Student Branch: <input type="text" name="branch" required>
+            <br><br>
+            <input type="submit" value="Add Student">
+         </form>
+         <br>
+         <% if(locals.message) { %>
+            <p><%= message %></p>
+            <% } %>
+        </center>
+</body>
+</html>
