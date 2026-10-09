@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+
+</head>
+<body>
+      <h1 align="center">Welcome TO Mongo Db Database Learning</h1>
+      <center>
+        <a href="/addstudent">Add Student</a>
+        &nbsp; 
+        <a href="/viewstudent">View Student</a>
+      </center>
+      <hr>
+      <center>
+       <table border="1">
+           <tr>
+               <th>Name</th>
+               <th>Age</th>
+               <th>Branch</th>
+               <th>Action</th>
+           </tr>
+           <% students.forEach((stu)=>
+           { %>
+            <tr>
+               <td><%=stu.name%></td>
+               <td><%=stu.age%></td>
+               <td><%=stu.branch%></td>
+               <td>
+                <a class="btn btn-danger" href="/delete_stu/<%=stu._id%>" onclick="return confirm('Are you Sure');">Delete</a>
+                <a class="btn btn-primary" onclick="stu_set_value('<%=stu._id%>','<%=stu.name%>','<%=stu.age%>','<%=stu.branch%>')" href="" data-bs-toggle="dialog" data-bs-target="#stumodal">Update</a>
+               </td>
+                  </tr>
+           <%})%>
+       </table>
+       </center>
+
+       <dialog class="dialog" id="stumodal">
+            <div class="dialog-header">
+                <h1 class="dialog-title">Manage Students</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="dialog" aria-label="Close"></button>
+            </div>
+            <div class="dialog-body">
+                  <form action="/update_student" method="post">
+                    <input type="hidden" name="stuid" id="stuid"/>
+                      <div class="mt-2">
+                          Student Name
+                          <input type="text" name="name" id="name" required class="form-control">
+                      </div>
+                      <div class="mt-2">
+                          Student Age
+                          <input type="text" name="age" id="age" required class="form-control">
+                      </div>
+                      <div class="mt-2">
+                          Student Branch
+                          <input type="text" name="branch" id="branch" required class="form-control">
+                      </div>
+                      <div class="mt-2">
+                          <button class="btn btn-primary">Update Now</button>
+                      </div>
+                  </form>
+            </div>
+         
+</dialog>
+
+ <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+ <script>
+    function stu_set_value(id,name,age,branch)
+    {
+           document.getElementById("stuid").value=id;
+           document.getElementById("name").value=name;
+           document.getElementById("age").value=age;
+           document.getElementById("branch").value=branch;
+    }
+ </script>
+</body>
+</html>
